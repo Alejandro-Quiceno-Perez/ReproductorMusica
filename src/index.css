@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0000009a;
+  background-image: url("./assets/images/bg2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  background-color: #000000ec;
+  width: 360px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.container .shape {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape-1 {
+  background: radial-gradient(circle at 35px 65px, #9b22ea, #005);
+  left: -65px;
+  top: -65px;
+}
+
+.shape-2 {
+  background: radial-gradient(circle at 45px 90px, #ea22b1, #111);
+  right: -65px;
+  bottom: -65px;
+}
+
+.shape-3 {
+  width: 60px !important;
+  height: 60px !important;
+  background: #08e2ff;
+  right: 8px;
+  top: 7px;
+  filter: blur(20px);
+}
+
+main {
+  width: 360px;
+  border-radius: 15px;
+  border: 1px solid #00000098;
+  box-shadow: 0 0 20px #494949;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(3px);
+}
+
+input[type="range"] {
+  -webkit-appearance: #9b22ea;
+  width: 100%;
+  height: 4px;
+  background-color: #9b22ea;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 400px) {
+
+  .container,
+  main {
+    width: 95vw;
+  }
+
+  .card {
+    padding: 20px 15px;
+  }
+
+  .card .img {
+    height: 220px;
+  }
+
+  .card .img img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .card .details .title {
+    font-size: 1rem;
+  }
+
+  .card .details .artist {
+    font-size: 0.85rem;
+  }
+
+  .card .controls #prev,
+  .card .controls #next {
+    font-size: 2rem;
+  }
+
+  .card .controls .play {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .card .controls .play::before {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .card .controls .volume {
+    padding: 15px;
+  }
+
+  .list {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .list ul li {
+    padding: 8px 20px;
+  }
+}
