@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import '../assets/css/card.css'
 import musics from '../assets/data/index'
 import { timer } from '../utils/timer'
+import { visualizer } from '../utils/visualizer'
 
 const Card = ({ props: { musicNumber, setMusicNumber, setOpen } }) => {
   const [duration, setDuration] = useState(1);
@@ -12,6 +13,7 @@ const Card = ({ props: { musicNumber, setMusicNumber, setOpen } }) => {
   const [repeat, setRepeat] = useState('repeat');
 
   const audioRef = useRef();
+  const canvasRef = useRef();
 
   const handleLoadStart = (e) => {
     const src = e.nativeEvent.srcElement.src;
@@ -27,6 +29,7 @@ const Card = ({ props: { musicNumber, setMusicNumber, setOpen } }) => {
   }
 
   const handlePlayingAudio = () => {
+    visualizer(audioRef.current, canvasRef.current, play)
     if (play) {
       audioRef.current.pause();
       setPlay(false)
@@ -104,13 +107,14 @@ const Card = ({ props: { musicNumber, setMusicNumber, setOpen } }) => {
     <div className='card'>
       <div className="nav">
         <i className="material-icons">expand_more</i>
-        <span>Now Playing {musicNumber + 1}/{musics.length} </span>
+        <span>La Oveja Negra {musicNumber + 1}/{musics.length} </span>
         <i className="material-icons" onClick={() => setOpen(prev => !prev)}>queue_music</i>
       </div>
       <div className="img">
         <img src={musics[musicNumber].img} alt="" 
           className={`${play ? 'playing' : ''}`}
         />
+        <canvas ref={canvasRef} />
       </div>
 
       <div className="details">
