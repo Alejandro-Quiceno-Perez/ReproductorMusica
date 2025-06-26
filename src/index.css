@@ -11,7 +11,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: #0000009a;
-  background-image: url("./assets/images/bg2.png");
+  background-image: url("/images/bg2.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: #f0f0f0;
