@@ -1,21 +1,40 @@
-import React, { useState } from 'react'
-import Card from './components/Card'
-import List from './components/List';
+import React, { useState, lazy, Suspense, useEffect } from 'react';
+import LazySuspense from './components/LazySuspense';
+
+const delayImport = (importFunc, time = 3000) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(importFunc());
+    }, time);
+  });
+};
+
+const Card = lazy(() => delayImport(() => import('./components/Card'), 3000));
+const List = lazy(() => delayImport(() => import('./components/List'), 3000));
 
 const App = () => {
   const [musicNumber, setMusicNumber] = useState(0);
   const [open, setOpen] = useState(false);
-  return (
-    <div className='container'>
-      {/* <div className="shape shape-1"></div>
-      <div className="shape shape-2"></div>
-      <div className="shape shape-3"></div> */}
-      <main>
-        <Card props={{ musicNumber, setMusicNumber, setOpen }} />
-        <List props={{ open, setOpen, musicNumber, setMusicNumber }} />
-      </main>
-    </div>
-  )
-}
+  const [loaded, setLoaded] = useState(false);
 
-export default App
+  // Cuando el lazy loading termina
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 3100); // mismo tiempo que tu delayImport
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <Suspense fallback={<LazySuspense />}>
+      <div className={`container ${loaded ? 'loaded' : ''}`}>
+        <main>
+          <Card props={{ musicNumber, setMusicNumber, setOpen }} />
+          <List props={{ open, setOpen, musicNumber, setMusicNumber }} />
+        </main>
+      </div>
+    </Suspense>
+  );
+};
+
+export default App;
