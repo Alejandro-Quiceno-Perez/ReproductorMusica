@@ -55,3 +55,4 @@ const Duration = ({ music }) => {
         <span className='duration'>{timer(duration)}</span>
     )
 }
+
