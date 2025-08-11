@@ -10,6 +10,7 @@
 body {
   width: 100%;
   min-height: 100vh;
+  background-color: #0000009a;
   background-image: url("/images/bg2.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,19 +18,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* Estado inicial */
-  opacity: 0;
-  filter: blur(8px);
-  pointer-events: none;
-  
-  transition: opacity 1.5s ease-out, filter 1.5s ease-out;
-}
-
-body.loaded {
-  opacity: 1;
-  filter: blur(0);
-  pointer-events: auto;
 }
 
 i {
@@ -46,17 +34,9 @@ ul {
   width: 360px;
   border-radius: 15px;
   position: relative;
-  opacity: 0;
-  filter: blur(8px);
-  pointer-events: none; /* para que no se pueda interactuar antes */
-  transition: opacity 1.5s ease-out, filter 1.5s ease-out;
 }
 
-.container.loaded {
-  opacity: 1;
-  filter: blur(0);
-  pointer-events: auto;
-}
+
 
 .container .shape {
   width: 150px;
@@ -102,6 +82,9 @@ input[type="range"] {
   height: 4px;
   background-color: #9b22ea;
 }
+
+
+
 
 
 /* Responsive */
