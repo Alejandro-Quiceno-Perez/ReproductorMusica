@@ -1,14 +1,18 @@
+
 .list {
     width: 100%;
     position: absolute;
     bottom: -60%;
     left: 0;
-    background: #fff;
-    color: #000;
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
     z-index: 10;
+
+    color: #f0f0f0;
+    background: #111;
+    border: 1px solid #303030;
+    border-radius: 10px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.45);
+
+    transition: all 0.2s ease-in-out;
 }
 
 .list.show {
@@ -18,13 +22,25 @@
 .list .header {
     width: 100%;
     padding: 15px 20px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background: #161616;
+    border-bottom: 1px solid #303030;
+    border-radius: 10px 10px 0 0;
 }
 
 .list .header i {
     font-size: 1.7rem;
+    color: #bdbdbd;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.list .header i:hover {
+    color: #fff;
 }
 
 .list .header > div {
@@ -34,47 +50,91 @@
     gap: 5px;
 }
 
-
-.list .header > div span{
-    font-size: 1.7rem; 
+.list .header > div span {
+    font-size: 1.4rem;
     text-transform: capitalize;
-    color: #252525ee;
+    color: #f0f0f0;
 }
 
 .list ul {
     width: 100%;
     height: 250px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .list ul::-webkit-scrollbar {
-    width: 0px;
+    width: 5px;
+}
+
+.list ul::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.list ul::-webkit-scrollbar-thumb {
+    background: #494949;
+    border-radius: 10px;
 }
 
 .list ul li {
     width: 100%;
-    padding: 10px 30px;
+    padding: 12px 20px;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    color: #d0d0d0;
+    background: transparent;
+    border-bottom: 1px solid #252525;
+
     cursor: pointer;
-    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .list ul li:hover {
-    background: #000000;
+    background: #242020;
     color: #fff;
 }
 
 .list ul li .row p {
-    color: #636363;
+    color: #929292;
     font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+.list ul li:hover .row p {
+    color: #c5c5c5;
 }
 
 .list .duration {
+    flex-shrink: 0;
+    color: #929292;
     font-size: 0.9rem;
 }
 
 .list ul li.playing {
-    background-color: rgb(0, 0, 0);
+    background: rgba(136, 16, 20, 0.22);
     color: #fff;
+    border-left: 3px solid #881014;
+}
+
+.list ul li.playing .row p,
+.list ul li.playing .duration {
+    color: #d6a6a7;
+}
+
+.list ul li.empty-list {
+    justify-content: center;
+    color: #808080;
+    cursor: default;
+    border-bottom: none;
+}
+
+.list ul li.empty-list:hover {
+    background: transparent;
+    color: #808080;
 }

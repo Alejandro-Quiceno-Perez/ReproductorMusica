@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/css/list.css'
-import musics from '../assets/data/index'
 import {timer} from '../utils/timer'
 
-const List = ({ props: { open, setOpen, musicNumber, setMusicNumber } }) => {
+const List = ({ props: { open, setOpen, musicNumber, setMusicNumber, musics } }) => {
 
 
 
@@ -18,7 +17,9 @@ const List = ({ props: { open, setOpen, musicNumber, setMusicNumber } }) => {
             </div>
             <ul>
                 {
-                    musics.map((music, index) => (
+                    musics.length === 0 ? (
+                        <li className="empty-list">Este álbum todavía no tiene canciones.</li>
+                    ) : musics.map((music, index) => (
                         <li key={music.id}
                             className={musicNumber === index ? 'playing' : ''}
                             onClick={() => setMusicNumber(index)}>
@@ -55,4 +56,3 @@ const Duration = ({ music }) => {
         <span className='duration'>{timer(duration)}</span>
     )
 }
-
