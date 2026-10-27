@@ -84,7 +84,7 @@ const Data = [
 const NoEraParaTanto = [
   {
     id: 1,
-    title: "SAV",
+    title: "S.A.V",
     artist: "Pato El Pez",
     song: "./music/01_SAV.wav",
     img: "./images/Sav.gif",
