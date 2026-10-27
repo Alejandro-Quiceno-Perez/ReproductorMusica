@@ -181,7 +181,8 @@
 .card .details .artist {
   margin: 10px;
   font-size: 1rem;
-  color: #808080;
+  font-weight: 600;
+  color: black;
 }
 
 /* progress */
